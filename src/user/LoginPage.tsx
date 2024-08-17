@@ -3,6 +3,7 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../user/UserContext";
+import "./loginPage.css";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -31,8 +32,10 @@ export default function LoginPage() {
   if (state.error) return <div>Error: {state.error}</div>;
 
   return (
-    <div>
-      {state.error && <div>Error: {state.error}</div>}
+    <div className="login-container">
+      <h1>Notespresso</h1>
+      <p>A cup of notes</p>
+      {state.error && <div className="error">Error: {state.error}</div>}
       <input
         type="text"
         placeholder="email"
@@ -46,7 +49,9 @@ export default function LoginPage() {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleEmailLogin}>Login</button>
-      <button onClick={loginWithGoogle}>Login with Google</button>
+      <button className="google-button" onClick={loginWithGoogle}>
+        Login with Google
+      </button>
     </div>
   );
 }
