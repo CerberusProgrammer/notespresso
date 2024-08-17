@@ -1,0 +1,94 @@
+.note-card {
+  background-color: #fff;
+  color: #6f4e37;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(111, 78, 55, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.note-card::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: #8b4513;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  transition: top 0.3s ease, transform 0.3s ease 0.3s, opacity 0.3s ease;
+  opacity: 0;
+  z-index: -1;
+}
+
+.note-card:hover::before {
+  top: 50%;
+  transform: translate(-50%, 50%) scale(50, 50);
+  opacity: 1;
+}
+
+.note-card:hover {
+  animation: paintCard 0.6s forwards 0.3s;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(111, 78, 55, 0.4);
+}
+
+@keyframes paintCard {
+  to {
+    background-color: #8b4513;
+    color: #fff;
+  }
+}
+
+.note-card h1,
+.note-card p,
+.note-card small {
+  transition: color 0.3s ease 0.1s;
+}
+
+.note-card:hover h1,
+.note-card:hover p,
+.note-card:hover small {
+  color: #fff;
+}
+
+.note-card h1 {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
+  color: inherit;
+}
+
+.note-card p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: inherit;
+}
+
+.note-card small {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: inherit;
+}
+
+.note-card button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  color: #ffffff56;
+  cursor: pointer;
+  font-size: 1.25rem;
+  transition: color 0.3s ease;
+}
+
+.note-card button:hover {
+  color: #fff;
+}
