@@ -2,9 +2,10 @@ import { useContext, useState } from "react";
 import { NotesContext } from "./NotesContext";
 import { Timestamp } from "firebase/firestore";
 import NoteCard from "./NoteCard";
+import { Note } from "./NotesState";
 
 export default function Notes() {
-  const { notes, addNote, deleteNote, loading, error } =
+  const { notes, addNote, updateNote, deleteNote, loading, error } =
     useContext(NotesContext);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -23,6 +24,10 @@ export default function Notes() {
 
   const handleDeleteNote = async (noteId: string) => {
     await deleteNote(noteId);
+  };
+
+  const handleUpdateNote = async (note: Note) => {
+    await updateNote(note);
   };
 
   return (
@@ -47,7 +52,7 @@ export default function Notes() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
           gap: "16px",
         }}
       >
@@ -56,6 +61,13 @@ export default function Notes() {
             key={index}
             note={note}
             onTap={() => handleDeleteNote(note.id)}
+            onUpdateTitle={(_, title) =>
+              handleUpdateNote({
+                ...note,
+                title,
+                updatedAt: Timestamp.now(),
+              })
+            }
           />
         ))}
       </div>
