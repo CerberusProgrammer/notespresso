@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { NotesContext } from "./NotesContext";
 import { Timestamp } from "firebase/firestore";
+import NoteCard from "./NoteCard";
 
 export default function Notes() {
   const { notes, addNote, deleteNote, loading, error } =
@@ -43,17 +44,19 @@ export default function Notes() {
       </div>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
-      <div>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+          gap: "16px",
+        }}
+      >
         {notes.map((note, index) => (
-          <div key={note.id + index}>
-            <h2>{note.title}</h2>
-            <p>{note.content}</p>
-            <small>Created At: {note.createdAt.toDate().toString()}</small>
-            <small>Updated At: {note.updatedAt.toDate().toString()}</small>
-            <button onClick={() => handleDeleteNote(note.id)}>
-              Delete Note
-            </button>
-          </div>
+          <NoteCard
+            key={index}
+            note={note}
+            onTap={() => handleDeleteNote(note.id)}
+          />
         ))}
       </div>
     </div>
