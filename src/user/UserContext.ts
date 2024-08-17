@@ -1,6 +1,6 @@
 import { createContext, Dispatch } from "react";
 import { initialUserState, UserState } from "./UserState";
-import { UserActions } from "./UserActions";
+import { UserActions } from "./user/UserActions";
 
 export const UserContext = createContext<{
   state: UserState;

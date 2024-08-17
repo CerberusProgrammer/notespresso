@@ -1,6 +1,5 @@
 import React, { useEffect, useReducer } from "react";
 import { UserContext } from "./UserContext";
-import { UserReducer } from "./UserReducer";
 import { initialUserState } from "./UserState";
 import {
   GoogleAuthProvider,
@@ -11,6 +10,8 @@ import {
 } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
 import { useNavigate } from "react-router-dom";
+import { UserReducer } from "./UserReducer";
+import LoginPage from "./LoginPage";
 
 type Props = {
   children?: React.ReactNode | React.ReactNode[];
@@ -21,15 +22,11 @@ export default function UserProvider({ children }: Props) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("xd");
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log("yes");
-        console.log(user);
         dispatch({ type: "login", user });
         navigate("/");
       } else {
-        console.log("no");
         dispatch({ type: "logout" });
         navigate("/login");
       }
@@ -83,7 +80,7 @@ export default function UserProvider({ children }: Props) {
     <UserContext.Provider
       value={{ state, dispatch, loginWithEmail, loginWithGoogle, logout }}
     >
-      {children}
+      {state.loading ? <LoginPage /> : children}
     </UserContext.Provider>
   );
 }
