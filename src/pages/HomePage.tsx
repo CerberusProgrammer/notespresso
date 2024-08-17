@@ -11,7 +11,6 @@ export default function HomePage() {
 
   return (
     <div>
-      <div>HomePage</div>
       <NotesPage />
       <button onClick={handleLogout}>Logout</button>
     </div>
