@@ -1,6 +1,6 @@
 body {
   font-family: "Arial", sans-serif;
-  background-color: #f3e5ab; /* Color crema */
+  background-color: #f3e5ab;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,12 +24,12 @@ body {
 }
 
 .login-container h1 {
-  color: #6f4e37; /* Color café oscuro */
+  color: #6f4e37;
   margin-bottom: 1rem;
 }
 
 .login-container p {
-  color: #8b4513; /* Color marrón */
+  color: #8b4513;
   margin-bottom: 2rem;
 }
 
@@ -45,7 +45,7 @@ body {
 }
 
 .login-container input:focus {
-  border-color: #6f4e37; /* Color café oscuro */
+  border-color: #6f4e37;
   box-shadow: 0 0 5px rgba(111, 78, 55, 0.5);
   outline: none;
 }
@@ -56,7 +56,7 @@ body {
   margin-bottom: 1rem;
   border: none;
   border-radius: 10px;
-  background-color: #6f4e37; /* Color café oscuro */
+  background-color: #6f4e37;
   color: #fff;
   font-size: 1rem;
   cursor: pointer;
@@ -64,25 +64,18 @@ body {
 }
 
 .login-container button:hover {
-  background-color: #8b4513; /* Color marrón */
+  background-color: #8b4513;
   transform: scale(1.05);
 }
 
 .login-container .google-button {
-  background: linear-gradient(
-    45deg,
-    #d4a373,
-    #b5838d
-  ); /* Gradiente de tonos café */
+  background: linear-gradient(45deg, #d4a373, #b5838d);
+
   color: #fff;
 }
 
 .login-container .google-button:hover {
-  background: linear-gradient(
-    45deg,
-    #b5838d,
-    #d4a373
-  ); /* Gradiente de tonos café invertido */
+  background: linear-gradient(45deg, #b5838d, #d4a373);
 }
 
 .login-container .error {
