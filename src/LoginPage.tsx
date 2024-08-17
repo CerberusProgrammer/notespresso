@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -9,6 +10,7 @@ import { auth } from "../firebaseConfig";
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate(); // Import and use useNavigate
 
   const handleEmailLogin = async () => {
     try {
@@ -18,6 +20,7 @@ export default function LoginPage() {
         password
       );
       console.log("Logged in:", userCredential.user);
+      navigate("/"); // Redirect to HomePage on successful login
     } catch (error) {
       console.error("Error logging in with email:", error);
     }
@@ -28,6 +31,7 @@ export default function LoginPage() {
     try {
       const userCredential = await signInWithPopup(auth, provider);
       console.log("Logged in with Google:", userCredential.user);
+      navigate("/");
     } catch (error) {
       console.error("Error logging in with Google:", error);
     }
