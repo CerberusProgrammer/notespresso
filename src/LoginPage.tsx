@@ -1,44 +1,38 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import {
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
-} from "firebase/auth";
+import { useContext, useState } from "react";
+import { UserContext } from "./providers/UserContext";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../firebaseConfig";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // Import and use useNavigate
+  const navigate = useNavigate();
+  const { state, loginWithEmail, dispatch } = useContext(UserContext);
 
   const handleEmailLogin = async () => {
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      console.log("Logged in:", userCredential.user);
-      navigate("/"); // Redirect to HomePage on successful login
-    } catch (error) {
-      console.error("Error logging in with email:", error);
-    }
+    await loginWithEmail(email, password);
   };
 
-  const handleGoogleLogin = async () => {
+  const loginWithGoogle = async () => {
+    dispatch({ type: "loading" });
     const provider = new GoogleAuthProvider();
     try {
       const userCredential = await signInWithPopup(auth, provider);
-      console.log("Logged in with Google:", userCredential.user);
+      dispatch({ type: "login", user: userCredential.user });
       navigate("/");
     } catch (error) {
-      console.error("Error logging in with Google:", error);
+      const errorCode = error as Error;
+      dispatch({ type: "error", error: errorCode.message });
     }
   };
 
+  if (state.loading) return <div>Loading...</div>;
+  if (state.error) return <div>Error: {state.error}</div>;
+
   return (
     <div>
+      {state.error && <div>Error: {state.error}</div>}
       <input
         type="text"
         placeholder="email"
@@ -52,7 +46,7 @@ export default function LoginPage() {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleEmailLogin}>Login</button>
-      <button onClick={handleGoogleLogin}>Login with Google</button>
+      <button onClick={loginWithGoogle}>Login with Google</button>
     </div>
   );
 }
