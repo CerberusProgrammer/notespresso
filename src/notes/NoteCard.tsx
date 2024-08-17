@@ -44,7 +44,6 @@ export default function NoteCard({ note, onTap, onUpdateTitle }: Props) {
       )}
       <p>{note.content}</p>
       <small>Created At: {note.createdAt.toDate().toString()}</small>
-      <small>Updated At: {note.updatedAt.toDate().toString()}</small>
       <button onClick={onTap}>
         <FontAwesomeIcon icon={faXmark} />
       </button>
