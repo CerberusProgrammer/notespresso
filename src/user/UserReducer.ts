@@ -1,4 +1,4 @@
-import { UserActions } from "./user/UserActions";
+import { UserActions } from "./UserActions";
 import { UserState } from "./UserState";
 
 export const UserReducer = (state: UserState, action: UserActions) => {
