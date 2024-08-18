@@ -1,6 +1,11 @@
 body {
-  font-family: "Roboto", sans-serif;
   background-color: #e9e9e9;
+  background-image: url("../components/coffee-bean.svg"),
+    url("../components/coffee-bean.svg");
+  background-repeat: repeat, repeat;
+  background-size: 35px 30px, 35px 30px;
+  background-position: 0 0, 17.5px 55px;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,6 +19,7 @@ body {
   text-align: center;
   max-width: 400px;
   width: 100%;
+  height: 100%;
   transition: transform 0.3s ease;
 }
 
