@@ -1,4 +1,3 @@
-import React from "react";
 import { useContext, useState } from "react";
 import { NotesContext } from "./NotesContext";
 import { Timestamp } from "firebase/firestore";
@@ -6,15 +5,14 @@ import NoteCard from "./NoteCard";
 import { Note } from "./NotesState";
 
 export default function Notes() {
-  const { notes, addNote, updateNote, deleteNote, loading, error } =
-    useContext(NotesContext);
+  const { notes, addNote, updateNote, deleteNote } = useContext(NotesContext);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
   const handleCreateNote = async () => {
     const newNote = {
-      title,
-      content,
+      title: "xdasas",
+      content: "xdasas",
       createdAt: Timestamp.now(),
       updatedAt: Timestamp.now(),
     };
@@ -32,39 +30,28 @@ export default function Notes() {
   };
 
   return (
-    <div>
-      <div
+    <>
+      <button
         style={{
-          position: "sticky",
-          top: 0,
-          backgroundColor: "#fff",
-          zIndex: 1000,
-          padding: "20px",
-          boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+          position: "fixed",
+          bottom: "10px",
+          right: "10px",
+          zIndex: 1,
+        }}
+        onClick={() => {
+          setTitle("xdasas");
+          setContent("xdasas");
+          handleCreateNote();
         }}
       >
-        <h1>My Notes</h1>
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <textarea
-          placeholder="Content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
-        <button onClick={handleCreateNote}>Create Note</button>
-      </div>
-      {loading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
+        Crear
+      </button>
       <div
         style={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          marginTop: "300px",
+          gap: "15px",
         }}
       >
         {notes.map((note, index) => (
@@ -79,9 +66,16 @@ export default function Notes() {
                 updatedAt: Timestamp.now(),
               })
             }
+            onUpdateContent={(_, content) =>
+              handleUpdateNote({
+                ...note,
+                content,
+                updatedAt: Timestamp.now(),
+              })
+            }
           />
         ))}
       </div>
-    </div>
+    </>
   );
 }
