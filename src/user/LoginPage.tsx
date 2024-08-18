@@ -32,26 +32,35 @@ export default function LoginPage() {
   if (state.error) return <div>Error: {state.error}</div>;
 
   return (
-    <div className="login-container">
-      <h1>Notespresso</h1>
-      <p>A cup of notes</p>
-      {state.error && <div className="error">Error: {state.error}</div>}
-      <input
-        type="text"
-        placeholder="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleEmailLogin}>Login</button>
-      <button className="google-button" onClick={loginWithGoogle}>
-        Login with Google
-      </button>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: "20vh",
+      }}
+    >
+      <div className="login-container">
+        <h1>Notespresso</h1>
+        <p>A cup of notes</p>
+        {state.error && <div className="error">Error: {state.error}</div>}
+        <input
+          type="text"
+          placeholder="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button onClick={handleEmailLogin}>Login</button>
+        <button className="google-button" onClick={loginWithGoogle}>
+          Login with Google
+        </button>
+      </div>
     </div>
   );
 }
