@@ -78,13 +78,17 @@ export default function NoteCard({
       ) : (
         <h1 onClick={handleTitleClick}>{note.title}</h1>
       )}
-      <textarea
-        ref={textareaRef}
-        value={content}
-        onChange={handleContentChange}
-        onBlur={handleContentBlur}
-        className="note-content-input"
-      ></textarea>
+      {isEditingContent ? (
+        <textarea
+          ref={textareaRef}
+          value={content}
+          onChange={handleContentChange}
+          onBlur={handleContentBlur}
+          className="note-content-input"
+        ></textarea>
+      ) : (
+        <p onClick={handleContentClick}>{note.content}</p>
+      )}
       <small>Created At: {note.createdAt.toDate().toString()}</small>
       <button onClick={onTap}>
         <FontAwesomeIcon icon={faXmark} />
