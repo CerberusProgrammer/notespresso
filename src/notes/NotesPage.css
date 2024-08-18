@@ -1,0 +1,162 @@
+.add-note-button {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1;
+  background-color: #6f4e37;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.add-note-button:hover {
+  width: 150px;
+  border-radius: 25px;
+}
+
+.add-note-icon {
+  transition: margin-right 0.3s ease;
+}
+
+.add-note-button:hover .add-note-icon {
+  margin-right: 10px;
+}
+
+.add-note-text {
+  display: none;
+  white-space: nowrap;
+}
+
+.add-note-button:hover .add-note-text {
+  display: inline;
+}
+
+.notes-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.dialog-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.3s ease;
+  max-width: 90%;
+  width: 400px;
+}
+
+.dialog-content input,
+.dialog-content textarea {
+  width: 100%;
+  border: 0px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.dialog-content input:focus,
+.dialog-content textarea:focus {
+  border-color: #6f4e37;
+  outline: none;
+}
+
+.dialog-content input.error,
+.dialog-content textarea.error {
+  border-color: red;
+}
+
+.char-counter {
+  font-size: 12px;
+  color: #999;
+  text-align: right;
+}
+
+.dialog-content input.error + .char-counter,
+.dialog-content textarea.error + .char-counter {
+  color: red;
+}
+
+.dialog-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dialog-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dialog-buttons button:hover {
+  transform: scale(1.05);
+}
+
+.dialog-buttons .cancel-button {
+  background-color: transparent;
+  color: #6f4e37;
+  border: 2px solid #6f4e37;
+}
+
+.dialog-buttons .cancel-button:hover {
+  background-color: #f5f5f5;
+}
+
+.dialog-buttons .create-button {
+  background-color: #6f4e37;
+  color: white;
+}
+
+.dialog-buttons .create-button:hover {
+  background-color: #5a3e2e;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
