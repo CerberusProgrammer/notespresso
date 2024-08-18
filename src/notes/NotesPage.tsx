@@ -1,3 +1,4 @@
+import React from "react";
 import { useContext, useState } from "react";
 import { NotesContext } from "./NotesContext";
 import { Timestamp } from "firebase/firestore";
@@ -32,8 +33,17 @@ export default function Notes() {
 
   return (
     <div>
-      <h1>My Notes</h1>
-      <div>
+      <div
+        style={{
+          position: "sticky",
+          top: 0,
+          backgroundColor: "#fff",
+          zIndex: 1000,
+          padding: "20px",
+          boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+        }}
+      >
+        <h1>My Notes</h1>
         <input
           type="text"
           placeholder="Title"
@@ -51,9 +61,10 @@ export default function Notes() {
       {error && <p>Error: {error}</p>}
       <div
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-          gap: "16px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          marginTop: "300px",
         }}
       >
         {notes.map((note, index) => (

@@ -1,7 +1,8 @@
 .note-card {
   background-color: #fff;
   width: 100%;
-  min-height: 100%; /* Cambiado de height a min-height */
+  max-width: 600px;
+  min-height: 100%;
   color: #6f4e37;
   padding: 1.5rem;
   border-radius: 10px;
@@ -11,14 +12,15 @@
   margin-bottom: 1rem;
   overflow: hidden;
   z-index: 1;
+  box-sizing: border-box;
 }
 
 .note-card p {
   margin-bottom: 1rem;
   font-size: 1rem;
   color: inherit;
-  overflow-wrap: break-word; /* Añadido para manejar palabras largas */
-  white-space: pre-wrap; /* Añadido para preservar saltos de línea */
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .note-card::before {
@@ -74,11 +76,11 @@
   font-size: 1.75rem;
   color: inherit;
   width: 100%;
-  overflow-wrap: break-word; /* Añadido para manejar palabras largas */
-  white-space: pre-wrap; /* Añadido para preservar saltos de línea */
-  border: none; /* Para el input */
-  background: none; /* Para el input */
-  outline: none; /* Para el input */
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  border: none;
+  background: none;
+  outline: none;
 }
 
 .note-card small {
