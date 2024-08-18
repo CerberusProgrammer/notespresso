@@ -10,9 +10,20 @@ export default function HomePage() {
   };
 
   return (
-    <div>
-      <NotesPage />
-      <button onClick={handleLogout}>Logout</button>
-    </div>
+    <>
+      {/* <button onClick={handleLogout}>Logout</button> */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "15px",
+          padding: "15px",
+        }}
+      >
+        <h1>Notesspreso</h1>
+        <NotesPage />
+      </div>
+    </>
   );
 }
