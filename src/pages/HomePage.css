@@ -1,0 +1,64 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.appbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-radius: 10px;
+  padding: 0px;
+  background-color: #8b4513;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.appbar-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.coffee-icon {
+  font-size: 40px;
+  padding: 15px 20px;
+  color: white;
+}
+
+.logout-icon {
+  font-size: 20px;
+  padding: 20px;
+  color: white;
+}
+
+.logout-button {
+  background-color: transparent;
+  color: white;
+
+  border-radius: 10px;
+  border: none;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.logout-button:hover .logout-icon {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .appbar-title {
+    display: none;
+  }
+
+  .coffee-icon {
+    font-size: 30px;
+  }
+}
